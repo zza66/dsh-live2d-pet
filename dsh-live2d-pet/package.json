@@ -5,6 +5,14 @@
   "type": "module",
   "description": "AI 控制的 Live2D 桌宠（DeepSeek Harness 插件）：模型导入/切换、Edge-TTS 与本地 GPT-SoVITS 口型同步、情绪与微动作、和桌宠对话、Agent 工具总线",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zza66/dsh-live2d-pet.git"
+  },
+  "homepage": "https://github.com/zza66/dsh-live2d-pet#readme",
+  "bugs": {
+    "url": "https://github.com/zza66/dsh-live2d-pet/issues"
+  },
   "main": "lib/index.js",
   "engines": {
     "node": ">=22"
