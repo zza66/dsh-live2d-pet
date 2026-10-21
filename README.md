@@ -28,26 +28,46 @@
 
 ## 安装
 
+四步。下面以 Windows + 默认 profile `desktop` 为例，路径按你的实际位置改。
+
 ```bash
-git clone https://github.com/<you>/dsh-live2d-pet.git
+git clone https://github.com/zza66/dsh-live2d-pet.git
 cd dsh-live2d-pet/dsh-live2d-pet
-npm install          # 只为装 ws（Edge-TTS 要发自定义请求头）
+npm install          # 只为装 ws（Edge-TTS 要发自定义请求头）；客户端 bundle 已在仓库里
 ```
 
-然后把它接进一个 DSH profile（以 `desktop` 为例，路径按你的实际位置改）：
-
-1. 打开 `~/.dsh/profiles/desktop/package.json`（Windows：`C:\Users\<你>\.dsh\profiles\desktop\package.json`）；
-2. 在 `dependencies` 里加一行：
+1. 打开 profile 的 `package.json`（Windows：`C:\Users\<你>\.dsh\profiles\desktop\package.json`，
+   macOS / Linux：`~/.dsh/profiles/desktop/package.json`）；
+2. 在 `dependencies` 里加一行，**指向插件目录**（不是仓库根）：
 
    ```json
    "dsh-live2d-pet": "link:D:/path/to/dsh-live2d-pet/dsh-live2d-pet"
    ```
 
-3. 在同一个文件的 `dsh.profile.bundles` 数组里加 `"dsh-live2d-pet"`；
-4. 在该 profile 目录执行 `npm install`（把 `link:` 装成软链）；
+   > Windows 上路径用正斜杠（`D:/...`）最省事；反斜杠要写两遍（`D:\\...`）。
+3. 在同一个文件的 `dsh.profile.bundles` 数组里加一个 `"dsh-live2d-pet"`；
+4. 在**该 profile 目录**下安装依赖 —— DSH 的 profile 用 pnpm 管，就用 pnpm；你自己的环境是
+   npm 管的就换 `npm install`：
+
+   ```bash
+   cd ~/.dsh/profiles/desktop
+   pnpm install
+   ```
+
 5. 重启 DSH（`dsh web`），刷新页面。
 
-桌宠卡片会出现在界面右下角；配置在 **设置 → Live2D 桌宠**。
+装对了的话：界面**右下角**出现桌宠卡片；`设置 → Live2D 桌宠` 里有模型库、音色、参数绑定。
+
+### 装不上时按这个顺序查
+
+| 现象 | 先看什么 |
+| --- | --- |
+| 完全没有卡片 | profile 的 `dsh.profile.bundles` 里有没有 `"dsh-live2d-pet"`；重启过没有 |
+| 卡片在但一直是空的 / 报 `E_PLUGIN_ASSET` | 插件目录里的 `lib/client.js` 在不在（clone 后应自带） |
+| 启动报 `Cannot find package 'ws'` | 忘了在 `dsh-live2d-pet/dsh-live2d-pet` 里 `npm install` |
+| `link:` 装完 `node_modules/dsh-live2d-pet` 不存在 | profile 目录里没跑 `pnpm install`（或 `npm install`） |
+| 有卡片、模型库为空 | 第一次启动应显示 `bundled`；若你之前建过 `<DSH_HOME>/live2d-pet/models`，它优先 |
+| 说话没声音 | 默认走 Edge 在线 TTS，需要能访问 `speech.platform.bing.com`；离线环境请配本地 GPT-SoVITS |
 
 ## 第一次启动：自带一只 Hiyori
 
