@@ -1,0 +1,10 @@
+# dsh-live2d-pet bundle patch — 把本插件作为一个 Host entry 插进 profile 的插件树。
+#
+# 约定（与官方模板一致，三处 id 必须对齐）：
+#   1. 本文件的 `id`
+#   2. package.json 的 `name`（也是 `dsh.bundle.patch` 声明的入口）
+#   3. Client bundle 里 `window.__ModuleLoader__.load({ id })` 的 id
+# 三者写歪的症状是「注册成功但界面什么都不多」，或在 loader 里直接报 entry failed。
+- insert:
+    - id: dsh-live2d-pet
+      name: 'dsh-live2d-pet'

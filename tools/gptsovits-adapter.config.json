@@ -1,0 +1,13 @@
+{
+  "_comment": "改这个文件就换声音，不用动 gptsovits-adapter.py。改完重启适配层即可。",
+  "_voice": "大肥鱼（自调少女音色）— 数据来源：尹紫鹭幻想社（Bilibili）《大肥鱼（自调少女音色）中文语音数据集》，CC BY-NC 4.0，非商用",
+  "gpt_sovits_url": "http://127.0.0.1:9880/tts",
+  "ref_audio": "D:\\GPT-SoVITS\\ref\\da-fei-yu-0031.wav",
+  "prompt_text": "今天的海水温度刚刚好，特别适合一边摸鱼，一边认真工作。",
+  "prompt_lang": "zh",
+  "text_lang": "zh",
+  "_text_split_method": "auto = 短句整句念（cut0，韵律连贯）、超过 150 字按句号切（cut2）。写成 cut5 会按逗号切碎，句中会出现长停顿和含糊的短音节（听起来像「哼」），不推荐。",
+  "text_split_method": "auto",
+  "listen_host": "127.0.0.1",
+  "listen_port": 9881
+}

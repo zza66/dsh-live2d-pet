@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+# Windows 批处理必须留 CRLF，否则 cmd 解析会出问题
+*.bat text eol=crlf
+
+# 二进制/生成物：别做行尾转换，也别让 diff 把它们当文本
+*.png binary
+*.jpg binary
+*.moc3 binary
+*.min.js -text
+*.wav binary
+*.mp3 binary

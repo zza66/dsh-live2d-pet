@@ -1,0 +1,61 @@
+{
+  "name": "dsh-live2d-pet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI 控制的 Live2D 桌宠（DeepSeek Harness 插件）：模型导入/切换、Edge-TTS 与本地 GPT-SoVITS 口型同步、情绪与微动作、和桌宠对话、Agent 工具总线",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "engines": {
+      "dsh": ">=0.1.5-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "src",
+    "shaders",
+    "framework/src",
+    "framework/LICENSE-Framework.md",
+    "framework/README-Framework.md",
+    "vendor/cubism/live2dcubismcore.min.js",
+    "vendor/cubism/live2dcubismcore.d.ts",
+    "vendor/cubism/LICENSE-Core.md",
+    "vendor/cubism/RedistributableFiles.txt",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "test": "node --test ../tools/test-envelope.mjs",
+    "gate:types": "node node_modules/typescript/bin/tsc --noEmit",
+    "gate:core": "node ../tools/gate-model.mjs ../vendor/cubism/live2dcubismcore.min.js \"../models-inbox/hiyori_vts/hiyori.moc3\"",
+    "gate:tts": "node ../tools/test-edge-tts-drm.mjs",
+    "gate:all": "node ../tools/verify-all.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "ws": "^8.22.0"
+  }
+}

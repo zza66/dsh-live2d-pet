@@ -1,0 +1,21 @@
+# 这个仓库只收三样东西：插件本体、门禁、自带的那一只样例模型。
+# 工作区里还有私有文档、别人的模型、语音素材、临时目录，一律不进版本库。
+/*
+!/.gitignore
+!/.gitattributes
+!/LICENSE
+!/THIRD-PARTY-LICENSES.md
+!/README.md
+!/dsh-live2d-pet/
+!/models-inbox/
+!/tools/
+
+# 插件目录里不该进库的
+dsh-live2d-pet/node_modules/
+dsh-live2d-pet/work/
+dsh-live2d-pet/.import-*
+dsh-live2d-pet/*.log
+
+# 模型库只带 hiyori
+models-inbox/*
+!models-inbox/hiyori_vts/

@@ -1,0 +1,20 @@
+{
+  "//": "只用于类型检查（`npx tsc --noEmit`）。真正的构建是 esbuild（build.mjs），它只剥类型不做检查 —— 所以方法名写错、属性不存在这类错误 esbuild 一律放过，必须靠这里抓。",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "strict": false,
+    "noImplicitAny": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": []
+  },
+  "include": ["src/**/*.ts", "src/**/*.mjs", "src/**/*.d.ts"]
+}
